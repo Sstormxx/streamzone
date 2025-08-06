@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreamZone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    header, footer {
+      background: #222;
+      padding: 1em;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5em 1em;
+      background: #333;
+    }
+    .nav-btn {
+      background: #ff4a4a;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .search-bar {
+      padding: 0.5em;
+      width: 60%;
+      border: none;
+      border-radius: 5px;
+    }
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1em;
+      padding: 1em;
+    }
+    .movie {
+      background: #222;
+      padding: 1em;
+      border-radius: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 180px;
+      border: none;
+      border-radius: 5px;
+    }
+    .login-box {
+      text-align: center;
+      padding: 2em;
+    }
+    .login-box input {
+      padding: 0.5em;
+      margin: 0.5em;
+      border-radius: 5px;
+      border: none;
+      width: 200px;
+    }
+    .login-box button {
+      padding: 0.5em 1em;
+      background: #ff4a4a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 600px) {
+      .search-bar {
+        width: 100%;
+        margin-top: 0.5em;
+      }
+      nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to StreamZone</h1>
+  </header>
+
+  <div class="login-box" id="loginBox">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username" id="username" /><br />
+    <input type="password" placeholder="Password" id="password" /><br />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="mainContent" style="display:none">
+    <nav>
+      <input type="text" class="search-bar" placeholder="Search for movies..." />
+      <button class="nav-btn" onclick="goHome()">Go to Home Page</button>
+    </nav>
+
+    <div class="movie-grid">
+      <div class="movie">
+        <h3>Action Movie</h3>
+        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+      </div>
+      <div class="movie">
+        <h3>Comedy Show</h3>
+        <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe>
+      </div>
+      <div class="movie">
+        <h3>Documentary</h3>
+        <iframe src="https://www.youtube.com/embed/Bx3V8C3_LAY" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 StreamZone. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (user && pass) {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+      } else {
+        alert('Please enter both username and password.');
+      }
+    }
+
+    function goHome() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
